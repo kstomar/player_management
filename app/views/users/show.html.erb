@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="form-group text-center mb-5">
+    <h1 class="display-3 mt-5" ><b>Welcome <%= "#{current_user.name} (As #{current_user.type})"%></b></h1>
+  </div>
+  <div class="form-group">
+    <div class="container login-shadow profile-box">
+    	<div class="container">
+				<div class="form-horizontal" style="text-align: left">
+					<p style="color: #8F8F8F">Name : </p>
+					<h3><%=@user.name%></h3>
+					<hr>
+					<p style="color: #8F8F8F">Email : </p>
+					<h3><%=@user.email%></h3>
+					<hr>
+					<%if current_user.organisation? %>
+						<% if current_user.my_player?(@user.id) %>
+							<p style="color: #8F8F8F">Salary : </p>
+							<h3><%=current_user.get_salary(@user.id)%></h3>
+							<hr>
+						<% end %>
+					<% end %>
+          <%= render "user_organisations_players"%>
+          <% if current_user.organisation?%>
+            <%= link_to 'Back', root_path, class: "btn btn-sm btn-secondary"%>
+          <% else %>
+            <%= link_to "Edit", edit_user_registration_path(@user.id), class: "btn btn-sm btn-primary" %>
+          <% end %>
+				</div>
+			</div>
+    </div>
+  </div>
+</div>

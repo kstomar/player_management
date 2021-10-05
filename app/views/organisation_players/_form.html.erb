@@ -1,0 +1,23 @@
+<div class= "form-group">
+  <div class="container login-shadow">
+    <%= form_for @organisation_player, html: { multipart: true } do |f| %>
+      <div class="form-group">
+        <% if @organisation_player.persisted? %>   
+          <%= f.object.player_name %>
+        <% else %>
+          <%= f.select :player_id, not_connected_player&.collect { |p| [ p.name, p.id ] },{ include_blank: false, prompt: "-- Select Player --", required: true}, {class: "form-control mb-3"}%>
+          <h3 class="mb-2">
+          </h3>
+        <% end %>
+      </div>
+      <div class="form-group">      
+        <%= f.text_field :salary, class: "form-control mb-3", placeholder: "Player's Salary"%>
+      </div>
+      <div class="form-group">      
+        <%= f.submit 'Submit', class: "btn btn-sm btn-success"%>
+        <%= link_to 'Back', root_path, class: "btn btn-sm btn-secondary"%>
+      </div>
+    <% end %>
+  </div>
+</div>
+  

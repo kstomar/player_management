@@ -1,0 +1,6 @@
+<% flash.each do |type, msg| %>
+  <div class="alert <%= flash_class(type) %> alert-dismissible" role="alert">
+    <%= msg %>
+    <a href="#" class="close logout text-decoration-none <%= flash_class(type) %>" data-dismiss="alert" aria-label="close">&times;</a>
+  </div>
+<% end %>

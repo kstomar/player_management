@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="form-group text-center mb-5">
+    <h1 class="display-4 mt-5" ><b>All Players</b></h1>
+  </div>
+  <div class="form-group">
+    <div class="container login-shadow index-box">
+      <%= form_tag(all_players_listing_path, method: 'get', remote: true) do %>
+        <div class="row">
+          <div class="col-md-9 col-sm-9">
+            <%= text_field_tag(:search, params[:search], class: "form-control") %>
+          </div>
+          <div class="col-md-3 col-sm-3">
+            <%= submit_tag("Search", class: "btn btn-primary") %>
+          </div>
+        </div>
+      <% end %>
+      <br>
+      <div id="search_results" class= "col-md-12">
+        <%= render partial: 'results', locals: {players: @players} %>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-md-6 col-sm-6">
+          <%= link_to 'Back', root_path, class: "btn btn-sm btn-secondary"%>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

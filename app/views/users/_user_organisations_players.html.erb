@@ -1,0 +1,15 @@
+<% if @user.player?%>
+	<% data = @user.organisations %>
+	<% message = "Organisations :" %>
+<% else %>
+	<% data = @user.players %>
+	<% message = "Players, You Have :" %>
+<% end %>
+<h4><u><%=message%></u></h4>
+<ul>
+	<% data.each do |organisation| %>
+		<li>
+			<%= organisation.name %>
+		</li>
+	<% end %>
+</ul>

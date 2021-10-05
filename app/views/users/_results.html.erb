@@ -1,0 +1,26 @@
+<table>
+  <tr>
+    <th>
+      Name
+    </th>
+    <th>
+      Email
+    </th>
+    <th>
+      Actions
+    </th>
+  </tr>
+  <% @players.each do |player| %>
+    <tr>
+      <td>
+        <%= player.name %>
+      </td>
+      <td>
+        <%= player.email %>
+      </td>
+      <td>
+        <%= link_to "View", user_path(player.id) %>
+      </td>
+    </tr>
+  <% end %>
+</table>

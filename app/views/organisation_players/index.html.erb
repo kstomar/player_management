@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="form-group text-center mb-5">
+    <h1 class="display-4 mt-5" ><b>Your Players</b></h1>
+  </div>
+  <div class="form-group">
+    <div class="container login-shadow index-box">
+      <table>
+        <tr>
+          <th>
+            Name
+          </th>
+          <th>
+            Email
+          </th>
+          <th>
+            Actions
+          </th>
+        </tr>
+        <% @organisation_players.each do |organisation_player| %>
+          <tr>
+            <td>
+              <%= organisation_player.player_name %>
+            </td>
+            <td>
+              <%= organisation_player.player_email %>
+            </td>
+            <td>
+              <%= link_to "View", user_path(organisation_player.player_id) %>
+              <%= link_to "Edit", edit_organisation_player_path(organisation_player.id) %>
+              <%= link_to "Remove", organisation_player_path(organisation_player.id), method: "delete" %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+      <hr>
+      <div class="row">
+        <div class="col-md-6 col-sm-6">
+          <%= link_to "Add New Player", new_organisation_player_path,style: "height:auto;width:200px",class:"btn btn-success" %><br />
+        </div>
+        <div class="col-md-6 col-sm-6">
+          <%= link_to "Check All Players", all_players_listing_path,style: "height:auto;width:200px",class:"btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
